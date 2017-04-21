@@ -26,7 +26,10 @@ public class drag_handler : MonoBehaviour, IBeginDragHandler , IDragHandler
 
     public void OnDrag( PointerEventData ed)
     {
-        Debug.Log(" on drag ");
-        
+        //Debug.Log(" on drag ");
+        //
+        Vector3 v= Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+        v.z = 0;
+        this.transform.position = v;
     }
 }
