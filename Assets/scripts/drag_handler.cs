@@ -7,9 +7,11 @@ using UnityEngine.EventSystems;
 public class drag_handler : MonoBehaviour, IBeginDragHandler , IDragHandler
 {
 
-	// Use this for initialization
+    // Use this for initialization
+    BoxCollider2D bxc2d;
 	void Start () {
         Debug.Log("on start");
+        bxc2d = gameObject.GetComponent<BoxCollider2D>();
 		
 	}
 	
@@ -22,6 +24,7 @@ public class drag_handler : MonoBehaviour, IBeginDragHandler , IDragHandler
     public void OnBeginDrag(PointerEventData ed)
     {
         Debug.Log("on begind drag");
+        bxc2d.enabled = false;
     }
 
     public void OnDrag( PointerEventData ed)

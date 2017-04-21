@@ -8,6 +8,7 @@ public class hand : MonoBehaviour {
     SpriteRenderer sr1;
     Image im1;
     GameObject card;
+    BoxCollider2D bxc2d;
     class position
     {
         public float begin_x;
