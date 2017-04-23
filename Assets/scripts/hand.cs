@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class hand : MonoBehaviour {
-    Sprite s1;
-    SpriteRenderer sr1;
+
+    protected Sprite s1;
+    protected SpriteRenderer sr1;
+    protected GameObject card;
+
     Image im1;
-    GameObject card;
     BoxCollider2D bxc2d;
-    class position
+    protected class position
     {
         public float begin_x;
         public float begin_y;
@@ -27,7 +29,7 @@ public class hand : MonoBehaviour {
     }
     position p1=new position(-4,-3.5,1.4);
 
-    class sprite_res_names
+    protected class sprite_res_names
     {
         static string[] names = { "cards/boss_1", "cards/anchutka", "cards/mara", "cards/babay" };
         static public string get_name()

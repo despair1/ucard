@@ -11,7 +11,7 @@ public class drag_handler : MonoBehaviour, IBeginDragHandler , IDragHandler, IEn
     public static drag_handler draged_card;
 
     BoxCollider2D bxc2d;
-    Transform t;
+    //Transform t;
     Vector3 pos;
     bool is_droped;
     
