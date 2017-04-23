@@ -5,33 +5,40 @@ using UnityEngine;
 public class enemy_hand : hand {
 
 
-    position p1 = new position(-4, 3.5, 1.4);
+    
+    static List<GameObject> enemy_cards = new List<GameObject>();
     // Use this for initialization
     void Start () {
-		
-	}
+        p1 = new position(-4, 3.5, 1.4);
+
+    }
     new public void OnNextMove()
     {
         if (p1.card_count < 9)
         {
-            card = new GameObject("enemy_card");
+            create_card_spite();
+            
             card.AddComponent<enemy_card_handler>();
-            
-            s1 = Resources.Load<Sprite>(sprite_res_names.get_name());
-            
-            sr1 = card.AddComponent<SpriteRenderer>();
 
-            //im1 = card.AddComponent<Image>();
-            //sr1.sprite = s1;
-            sr1.sprite = s1;
-            card.AddComponent<BoxCollider2D>();
-            sr1.transform.position = new Vector3(p1.begin_x + p1.card_count * p1.offset,
-                p1.begin_y, 0);
-            p1.card_count++;
-
+            enemy_cards.Add(card);
+            move_card_to_field();
         }
+        
 
     }
+
+    void move_card_to_field()
+    {
+        if (p1.card_count % 2 == 0)
+        {
+            enemy_field ef = enemy_field.get_free_enemy_field();
+            enemy_card_handler card = enemy_card_handler.get_random_card_from_hand();
+            card.gameObject.transform.position = ef.gameObject.transform.position;
+
+        }
+    }
+
+
     // Update is called once per frame
     void Update () {
 		

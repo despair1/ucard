@@ -5,9 +5,25 @@ using UnityEngine.EventSystems;
 
 public class enemy_card_handler : MonoBehaviour, IDropHandler
 {
+    static List<enemy_card_handler> enemy_cards = new List<enemy_card_handler>();
+    public static enemy_card_handler get_random_card_from_hand()
+    {
+        return enemy_cards[0];
+    }
+    /*public static enemy_card_handler get_free_enemy_field()
+    {
+        foreach(var ech in enemy_fields)
+        {
+            if (!ech.has_card) return ech;
+        }
+        return null;
+    }
+    bool has_card = false;*/
 
 	// Use this for initialization
 	void Start () {
+
+        enemy_cards.Add(this);
 		
 	}
 	

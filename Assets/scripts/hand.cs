@@ -27,7 +27,7 @@ public class hand : MonoBehaviour {
             card_count = 0;
         }
     }
-    position p1=new position(-4,-3.5,1.4);
+    protected position p1=new position(-4,-3.5,1.4);
 
     protected class sprite_res_names
     {
@@ -51,22 +51,27 @@ public class hand : MonoBehaviour {
     {
         if (p1.card_count<9)
         {
-            card = new GameObject("card");
+            create_card_spite();
             card.AddComponent<drag_handler>();
-            //s1 = Resources.Load<Sprite>("cards/boss_1");
-            s1 = Resources.Load<Sprite>(sprite_res_names.get_name());
-            //s1 = Resources.Load<Sprite>("boss_1");
-            sr1 = card.AddComponent<SpriteRenderer>();
-            
-            //im1 = card.AddComponent<Image>();
-            //sr1.sprite = s1;
-            sr1.sprite = s1;
-            card.AddComponent<BoxCollider2D>();
-            sr1.transform.position = new Vector3(p1.begin_x+p1.card_count*p1.offset,
-                p1.begin_y, 0);
-            p1.card_count++;
-
         }
+
+    }
+    protected void create_card_spite()
+    {
+        card = new GameObject("card");
+        //card.AddComponent<drag_handler>();
+        //s1 = Resources.Load<Sprite>("cards/boss_1");
+        s1 = Resources.Load<Sprite>(sprite_res_names.get_name());
+        //s1 = Resources.Load<Sprite>("boss_1");
+        sr1 = card.AddComponent<SpriteRenderer>();
+
+        //im1 = card.AddComponent<Image>();
+        //sr1.sprite = s1;
+        sr1.sprite = s1;
+        card.AddComponent<BoxCollider2D>();
+        sr1.transform.position = new Vector3(p1.begin_x + p1.card_count * p1.offset,
+            p1.begin_y, 0);
+        p1.card_count++;
 
     }
 	
