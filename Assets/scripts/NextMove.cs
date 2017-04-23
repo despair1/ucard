@@ -8,7 +8,7 @@ public class NextMove : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        Debug.Log("wtf&&&");
+        //Debug.Log("wtf&&&");
 		
 	}
 	
@@ -19,6 +19,6 @@ public class NextMove : MonoBehaviour {
 
     public void OnClick ()
     {
-        Debug.Log(" Clicing ");
+        //Debug.Log(" Clicing ");
     }
 }
