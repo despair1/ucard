@@ -13,6 +13,10 @@ public class enemy_field : MonoBehaviour {
         }
         return null;
     }
+    public void take_card()
+    {
+        has_card = true;
+    }
     bool has_card = false;
     // Use this for initialization
     void Start () {

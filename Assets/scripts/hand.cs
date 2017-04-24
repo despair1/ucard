@@ -51,14 +51,14 @@ public class hand : MonoBehaviour {
     {
         if (p1.card_count<9)
         {
-            create_card_spite();
+            create_card_spite("player_card");
             card.AddComponent<drag_handler>();
         }
 
     }
-    protected void create_card_spite()
+    protected void create_card_spite(string card_object_name)
     {
-        card = new GameObject("card");
+        card = new GameObject(card_object_name);
         //card.AddComponent<drag_handler>();
         //s1 = Resources.Load<Sprite>("cards/boss_1");
         s1 = Resources.Load<Sprite>(sprite_res_names.get_name());

@@ -3,8 +3,9 @@
 # =============== #
 Temp/
 Library/
-gravity_Data/
-
+# gravity_Data/
+sword_Data/
+sword32_Data/
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #

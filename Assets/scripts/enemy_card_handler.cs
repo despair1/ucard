@@ -5,10 +5,16 @@ using UnityEngine.EventSystems;
 
 public class enemy_card_handler : MonoBehaviour, IDropHandler
 {
+    bool in_field = false;
+
     static List<enemy_card_handler> enemy_cards = new List<enemy_card_handler>();
     public static enemy_card_handler get_random_card_from_hand()
     {
         return enemy_cards[0];
+    }
+    public void go_field()
+    {
+        in_field = true;
     }
     /*public static enemy_card_handler get_free_enemy_field()
     {
