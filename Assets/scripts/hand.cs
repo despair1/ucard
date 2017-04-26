@@ -8,11 +8,13 @@ public class hand : MonoBehaviour {
     protected Sprite s1;
     protected SpriteRenderer sr1;
     protected GameObject card;
+    protected List<GameObject> cards_in_hand = new List<GameObject>();
 
     Image im1;
     BoxCollider2D bxc2d;
     protected class position
     {
+        public float original_x;
         public float begin_x;
         public float begin_y;
         public float offset;
@@ -21,13 +23,15 @@ public class hand : MonoBehaviour {
 
         public position(double x,double y,double ofst)
         {
+            
             begin_x = (float)x ;
+            original_x = (float)x;
             begin_y = (float)y;
             offset = (float)ofst;
             card_count = 0;
         }
     }
-    protected position p1=new position(-4,-3.5,1.4);
+    protected position p1=new position(0,-3.5,1.4);
 
     protected class sprite_res_names
     {
@@ -49,7 +53,7 @@ public class hand : MonoBehaviour {
 
     public void OnNextMove()
     {
-        if (p1.card_count<9)
+        if (cards_in_hand.Count<9)
         {
             create_card_spite("player_card");
             card.AddComponent<drag_handler>();
@@ -69,10 +73,29 @@ public class hand : MonoBehaviour {
         //sr1.sprite = s1;
         sr1.sprite = s1;
         card.AddComponent<BoxCollider2D>();
-        sr1.transform.position = new Vector3(p1.begin_x + p1.card_count * p1.offset,
+        /*sr1.transform.position = new Vector3(p1.begin_x + p1.card_count * p1.offset,
             p1.begin_y, 0);
-        p1.card_count++;
+        p1.card_count++;*/
+        cards_in_hand.Add(card);
+        set_new_hand_positions();
 
+    }
+
+    public void set_new_hand_positions()
+    {
+        float begin_x = p1.original_x - cards_in_hand.Count * p1.offset/2;
+        int card_count = 0;
+        foreach(var card in cards_in_hand)
+        {
+            card.transform.position = new Vector3(begin_x + p1.offset * card_count,
+                p1.begin_y, 0);
+            card_count++;
+        }
+    }
+
+    public void remove_card_from_hand(GameObject card)
+    {
+        cards_in_hand.Remove(card);
     }
 	
 	// Update is called once per frame

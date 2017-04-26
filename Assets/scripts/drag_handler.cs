@@ -14,12 +14,14 @@ public class drag_handler : MonoBehaviour, IBeginDragHandler , IDragHandler, IEn
     //Transform t;
     Vector3 pos;
     bool is_droped;
+    hand hand_obj;
     
     
 	void Start () {
         Debug.Log("on start");
         bxc2d = gameObject.GetComponent<BoxCollider2D>();
         card_state = card_states.in_hand;
+        hand_obj = GameObject.Find("hand_obj").GetComponent<hand>();
 		
 	}
 	
@@ -65,5 +67,7 @@ public class drag_handler : MonoBehaviour, IBeginDragHandler , IDragHandler, IEn
         is_droped = true;
         card_state = card_states.on_field;
         bxc2d.enabled = true;
+        hand_obj.remove_card_from_hand(this.gameObject);
+        hand_obj.set_new_hand_positions();
     }
 }
