@@ -43,6 +43,7 @@ public class enemy_hand : hand {
                     //enemy_card_handler card = enemy_card_handler.get_random_card_from_hand();
                     card.transform.position = free_enemy_field.gameObject.transform.position;
                     set_new_hand_positions();
+                    //card.AddComponent<take_player_attack>();
                 }
                 break;
 

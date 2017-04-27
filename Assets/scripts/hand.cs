@@ -49,33 +49,26 @@ public class hand : MonoBehaviour {
         sr1.sprite = s1;
         sr1.transform.position = new Vector3(-2, -4, 0);
         //Instantiate(s1);*/
+        Debug.Log("CREATING HAND OBJ");
 	}
 
-    public void OnNextMove()
+    public void OnNextMove() // player move
     {
         if (cards_in_hand.Count<9)
         {
             create_card_spite("player_card");
             card.AddComponent<drag_handler>();
         }
+        //this.gameObject.GetComponent<player_field_cont>().set_ready2attack();
 
     }
     protected void create_card_spite(string card_object_name)
     {
         card = new GameObject(card_object_name);
-        //card.AddComponent<drag_handler>();
-        //s1 = Resources.Load<Sprite>("cards/boss_1");
         s1 = Resources.Load<Sprite>(sprite_res_names.get_name());
-        //s1 = Resources.Load<Sprite>("boss_1");
         sr1 = card.AddComponent<SpriteRenderer>();
-
-        //im1 = card.AddComponent<Image>();
-        //sr1.sprite = s1;
         sr1.sprite = s1;
         card.AddComponent<BoxCollider2D>();
-        /*sr1.transform.position = new Vector3(p1.begin_x + p1.card_count * p1.offset,
-            p1.begin_y, 0);
-        p1.card_count++;*/
         cards_in_hand.Add(card);
         set_new_hand_positions();
 

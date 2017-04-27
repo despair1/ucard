@@ -6,19 +6,19 @@ using UnityEngine.EventSystems;
 
 public class drag_handler : MonoBehaviour, IBeginDragHandler , IDragHandler, IEndDragHandler
 {
-    public enum card_states { in_hand,on_field}
+    public enum card_states { in_hand,on_field,ready2attack}
     public card_states card_state;
     public static drag_handler draged_card;
 
     BoxCollider2D bxc2d;
     //Transform t;
     Vector3 pos;
-    bool is_droped;
+    bool is_droped_on_player_field;
     hand hand_obj;
     
     
 	void Start () {
-        Debug.Log("on start");
+        //Debug.Log("on start");
         bxc2d = gameObject.GetComponent<BoxCollider2D>();
         card_state = card_states.in_hand;
         hand_obj = GameObject.Find("hand_obj").GetComponent<hand>();
@@ -33,11 +33,11 @@ public class drag_handler : MonoBehaviour, IBeginDragHandler , IDragHandler, IEn
 
     public void OnBeginDrag(PointerEventData ed)
     {
-        Debug.Log("on begind drag");
+        //Debug.Log("on begind drag");
         bxc2d.enabled = false;
         pos = this.transform.position;
         draged_card = this;
-        is_droped = false;
+        is_droped_on_player_field = false;
     }
 
     public void OnDrag( PointerEventData ed)
@@ -51,9 +51,9 @@ public class drag_handler : MonoBehaviour, IBeginDragHandler , IDragHandler, IEn
     public void OnEndDrag( PointerEventData ed)
     {
         
-        if (!is_droped)
+        if (!is_droped_on_player_field)
         {
-            Debug.Log("on end drag");
+            //Debug.Log("on end drag");
             this.transform.position = pos;
             bxc2d.enabled = true;
         }
@@ -64,7 +64,7 @@ public class drag_handler : MonoBehaviour, IBeginDragHandler , IDragHandler, IEn
     {
         this.transform.position = pos;
         Debug.Log("card droped");
-        is_droped = true;
+        is_droped_on_player_field = true;
         card_state = card_states.on_field;
         bxc2d.enabled = true;
         hand_obj.remove_card_from_hand(this.gameObject);

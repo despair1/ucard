@@ -47,6 +47,9 @@ public class enemy_card_handler : MonoBehaviour, IDropHandler
             drag_handler.draged_card.droped(this.transform.position);
             has_card = true;
         }*/
-        Debug.Log(" enemy card: droped by player");
+        if (in_field)
+        {
+            Debug.Log(" enemy card: droped by player");
+        }
     }
 }

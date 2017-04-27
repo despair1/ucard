@@ -7,7 +7,7 @@ public class player_field : MonoBehaviour,IDropHandler {
     bool has_card;
 	// Use this for initialization
 	void Start () {
-        Debug.Log(" start player field");
+        //Debug.Log(" start player field");
         has_card = false;
 		
 	}
