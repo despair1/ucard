@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class enemy_card_handler : MonoBehaviour, IDropHandler
+public class enemy_card_handler : card_view, IDropHandler
 {
     bool in_field = false;
 

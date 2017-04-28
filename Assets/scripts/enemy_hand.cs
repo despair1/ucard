@@ -26,6 +26,12 @@ public class enemy_hand : hand {
         
 
     }
+    new protected card_view add_view2card()
+    {
+        
+        return card.AddComponent<enemy_card_handler>();
+        
+    }
 
     void move_card_to_field()
     {

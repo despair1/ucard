@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class hand : MonoBehaviour {
+public class hand : MonoBehaviour,IcardGOcont {
 
     protected Sprite s1;
     protected SpriteRenderer sr1;
@@ -57,7 +57,7 @@ public class hand : MonoBehaviour {
         if (cards_in_hand.Count<9)
         {
             create_card_gameobj("player_card",global::card.card_owner.player);
-            card.AddComponent<drag_handler>();
+            //card.AddComponent<drag_handler>();
         }
         this.gameObject.GetComponent<player_field_cont>().set_ready2attack();
 
@@ -71,9 +71,21 @@ public class hand : MonoBehaviour {
         card_logic.owner = card_owner;
         sr1.sprite = s1;
         card.AddComponent<BoxCollider2D>();
-        cards_in_hand.Add(card);
+        // unic cont for player\enemy hand
+        //cards_in_hand.Add(card);
+        card_view cv = add_view2card();
+        cv.cardGOcont = this;
+        cv.cardGOcont.add2cont(card);
         set_new_hand_positions();
 
+    }
+
+    protected card_view add_view2card()
+    {
+        //var dh=card.AddComponent<drag_handler>();
+        return card.AddComponent<drag_handler>();
+        //dh.cardGOcont = this;
+        //dh.cardGOcont.add2cont(card);
     }
 
     public void set_new_hand_positions()
@@ -91,6 +103,17 @@ public class hand : MonoBehaviour {
     public void remove_card_from_hand(GameObject card)
     {
         cards_in_hand.Remove(card);
+    }
+
+    public void add2cont(GameObject card)
+    {
+        cards_in_hand.Add(card);
+
+    }
+
+    public void remove_from_cont(GameObject card)
+    {
+
     }
 	
 	// Update is called once per frame

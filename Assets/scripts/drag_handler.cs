@@ -4,7 +4,7 @@ using UnityEngine;
 //using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class drag_handler : MonoBehaviour, IBeginDragHandler , IDragHandler, IEndDragHandler
+public class drag_handler : card_view, IBeginDragHandler , IDragHandler, IEndDragHandler
 {
     public enum card_states { in_hand,on_field,ready2attack}
     public card_states card_state;
