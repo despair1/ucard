@@ -73,14 +73,14 @@ public class hand : MonoBehaviour,IcardGOcont {
         card.AddComponent<BoxCollider2D>();
         // unic cont for player\enemy hand
         //cards_in_hand.Add(card);
-        card_view cv = add_view2card();
+        card_view cv = this.add_view2card();
         cv.cardGOcont = this;
         cv.cardGOcont.add2cont(card);
         set_new_hand_positions();
 
     }
 
-    protected card_view add_view2card()
+    virtual protected card_view add_view2card()
     {
         //var dh=card.AddComponent<drag_handler>();
         return card.AddComponent<drag_handler>();
@@ -113,6 +113,8 @@ public class hand : MonoBehaviour,IcardGOcont {
 
     public void remove_from_cont(GameObject card)
     {
+        cards_in_hand.Remove(card);
+        card.GetComponent<card_view>().cardGOcont = null;
 
     }
 	

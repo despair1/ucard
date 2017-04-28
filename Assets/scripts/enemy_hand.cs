@@ -18,7 +18,7 @@ public class enemy_hand : hand {
         {
             create_card_gameobj("enemy_card",global::card.card_owner.enemy);
             
-            card.AddComponent<enemy_card_handler>();
+            //card.AddComponent<enemy_card_handler>();
 
             //cards_in_hand.Add(card);
             move_card_to_field();
@@ -26,9 +26,9 @@ public class enemy_hand : hand {
         
 
     }
-    new protected card_view add_view2card()
+    override protected card_view add_view2card()
     {
-        
+        Debug.Log(" in enemy add v2c 111");
         return card.AddComponent<enemy_card_handler>();
         
     }
@@ -42,6 +42,10 @@ public class enemy_hand : hand {
                 if (free_enemy_field)
                 {
                     cards_in_hand.Remove(card);
+                    if (!card.GetComponent<enemy_card_handler>())
+                    {
+                        Debug.Log("0 ref");
+                    }
                     card.GetComponent<enemy_card_handler>().go_field();
                     free_enemy_field.take_card();
 
