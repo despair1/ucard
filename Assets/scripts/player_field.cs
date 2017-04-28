@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class player_field : MonoBehaviour,IDropHandler {
-    bool has_card;
+    public bool has_card;
 	// Use this for initialization
 	void Start () {
         //Debug.Log(" start player field");
@@ -23,8 +23,8 @@ public class player_field : MonoBehaviour,IDropHandler {
             drag_handler.card_states.in_hand)
         {
             Debug.Log(" on drop ");
-            drag_handler.draged_card.droped(this.transform.position);
-            has_card = true;
+            drag_handler.draged_card.droped_on_player_field(this);
+            //has_card = true;
         }
     }
 }

@@ -15,6 +15,8 @@ public class drag_handler : MonoBehaviour, IBeginDragHandler , IDragHandler, IEn
     Vector3 pos;
     bool is_droped_on_player_field;
     hand hand_obj;
+    player_field_cont player_field_container_obj;
+    public player_field underlying_player_field;
     
     
 	void Start () {
@@ -22,6 +24,7 @@ public class drag_handler : MonoBehaviour, IBeginDragHandler , IDragHandler, IEn
         bxc2d = gameObject.GetComponent<BoxCollider2D>();
         card_state = card_states.in_hand;
         hand_obj = GameObject.Find("hand_obj").GetComponent<hand>();
+        player_field_container_obj = GameObject.Find("hand_obj").GetComponent<player_field_cont>();
 		
 	}
 	
@@ -60,14 +63,17 @@ public class drag_handler : MonoBehaviour, IBeginDragHandler , IDragHandler, IEn
 
     }
 
-    public void droped(Vector3 pos)
+    public void droped_on_player_field(player_field pl_field)
     {
-        this.transform.position = pos;
-        Debug.Log("card droped");
+        this.transform.position = pl_field.transform.position;
+        pl_field.has_card = true;
+        underlying_player_field = pl_field;
+        //Debug.Log("card droped");
         is_droped_on_player_field = true;
         card_state = card_states.on_field;
         bxc2d.enabled = true;
         hand_obj.remove_card_from_hand(this.gameObject);
+        player_field_container_obj.add_card2field(this.gameObject);
         hand_obj.set_new_hand_positions();
     }
 }

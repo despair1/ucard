@@ -56,17 +56,19 @@ public class hand : MonoBehaviour {
     {
         if (cards_in_hand.Count<9)
         {
-            create_card_spite("player_card");
+            create_card_gameobj("player_card",global::card.card_owner.player);
             card.AddComponent<drag_handler>();
         }
-        //this.gameObject.GetComponent<player_field_cont>().set_ready2attack();
+        this.gameObject.GetComponent<player_field_cont>().set_ready2attack();
 
     }
-    protected void create_card_spite(string card_object_name)
+    protected void create_card_gameobj(string card_object_name,card.card_owner card_owner)
     {
         card = new GameObject(card_object_name);
         s1 = Resources.Load<Sprite>(sprite_res_names.get_name());
         sr1 = card.AddComponent<SpriteRenderer>();
+        card card_logic = card.AddComponent<card>();
+        card_logic.owner = card_owner;
         sr1.sprite = s1;
         card.AddComponent<BoxCollider2D>();
         cards_in_hand.Add(card);

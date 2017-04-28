@@ -28,4 +28,13 @@ public class player_field_cont : MonoBehaviour {
             card.GetComponent<drag_handler>().card_state = drag_handler.card_states.ready2attack;
         }
     }
+    public void remove_from_field(GameObject card)
+    {
+        cards_in_field.Remove(card);
+        var dh = card.GetComponent<drag_handler>();
+        dh.underlying_player_field.has_card=false;
+        //pf.has_card = false;
+        dh.underlying_player_field = null;
+
+    }
 }
