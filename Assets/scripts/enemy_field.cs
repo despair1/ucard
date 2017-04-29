@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy_field : MonoBehaviour {
+public class enemy_field : base_field {
 
-    static List<enemy_field> enemy_fields = new List<enemy_field>();
+    /*static List<enemy_field> enemy_fields = new List<enemy_field>();
     public static enemy_field get_free_enemy_field()
     {
         foreach(var ech in enemy_fields)
@@ -22,7 +22,7 @@ public class enemy_field : MonoBehaviour {
     void Start () {
         enemy_fields.Add(this);
 		
-	}
+	}*/
 	
 	// Update is called once per frame
 	void Update () {

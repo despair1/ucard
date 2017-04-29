@@ -66,7 +66,7 @@ public class drag_handler : card_view, IBeginDragHandler , IDragHandler, IEndDra
     public void droped_on_player_field()
     {
         //this.transform.position = pl_field.transform.position;
-        this.transform.position = this.base_field1.transform.position;
+        //this.transform.position = this.base_field1.transform.position;
         //pl_field.place(this.gameObject);
         //underlying_player_field = pl_field;
         //Debug.Log("card droped");
@@ -74,7 +74,7 @@ public class drag_handler : card_view, IBeginDragHandler , IDragHandler, IEndDra
         card_state = card_states.on_field;
         bxc2d.enabled = true;
         //hand_obj.remove_card_from_hand(this.gameObject);
-        cardGOcont.remove_from_cont(this.gameObject);
+        //cardGOcont.remove_from_cont(this.gameObject);
         //player_field_container_obj.add_card2field(this.gameObject);
         //hand_obj.set_new_hand_positions();
     }

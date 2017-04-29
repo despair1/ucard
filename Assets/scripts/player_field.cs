@@ -23,8 +23,9 @@ public class player_field : base_field,IDropHandler {
             drag_handler.card_states.in_hand)
         {
             Debug.Log(" on drop ");
-            drag_handler.draged_card.base_field1 = this;
-            place(drag_handler.draged_card.gameObject);
+            //drag_handler.draged_card.base_field1 = this;
+            //place(drag_handler.draged_card.gameObject);
+            drag_handler.draged_card.move2field(this);
             drag_handler.draged_card.droped_on_player_field();
             //has_card = true;
         }

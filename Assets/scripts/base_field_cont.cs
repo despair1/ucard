@@ -29,6 +29,16 @@ public class base_field_cont : MonoBehaviour {
         }
     }
 	
+    public base_field get_free_field()
+    {
+        foreach (GameObject field in enemy_fields)
+        {
+            base_field bf = field.GetComponent<base_field>();
+            if (!bf.check_card()) return bf;
+
+        }
+        return null;
+    }
 	// Update is called once per frame
 	void Update () {
 		
