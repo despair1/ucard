@@ -21,9 +21,9 @@ public class enemy_hand : hand {
             //card.AddComponent<enemy_card_handler>();
 
             //cards_in_hand.Add(card);
-            move_card_to_field();
+            
         }
-        
+        move_card_to_field();
 
     }
     override protected card_view add_view2card()

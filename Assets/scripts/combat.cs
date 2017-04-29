@@ -19,11 +19,12 @@ public class combat : MonoBehaviour {
     public void card2card(GameObject attacking_card, GameObject defending_card)
     {
         destroy_card(attacking_card);
+        destroy_card(defending_card);
 
     }
     void destroy_card(GameObject card)
     {
-        if (card.GetComponent<card>().owner == global::card.card_owner.player)
+        //if (card.GetComponent<card>().owner == global::card.card_owner.player)
         {
             //player_field_container_obj.remove_from_field(card);
             card.GetComponent<card_view>().base_field1.remove_card();
