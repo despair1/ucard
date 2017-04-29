@@ -29,12 +29,15 @@ public class base_field_cont : MonoBehaviour {
         }
     }
 	
-    public base_field get_free_field()
+    public base_field get_free_field(card.card_owner owner=card.card_owner.enemy,bool busy=false)
     {
-        foreach (GameObject field in enemy_fields)
+        List<GameObject> t;
+        if (owner == card.card_owner.enemy) t = enemy_fields;
+        else t = player_fields;
+        foreach (GameObject field in t)
         {
             base_field bf = field.GetComponent<base_field>();
-            if (!bf.check_card()) return bf;
+            if ((!bf.check_card())^busy) return bf;
 
         }
         return null;

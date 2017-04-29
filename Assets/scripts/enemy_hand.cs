@@ -23,6 +23,7 @@ public class enemy_hand : hand {
             //cards_in_hand.Add(card);
             
         }
+        attack_player();
         move_card_to_field();
 
     }
@@ -31,6 +32,18 @@ public class enemy_hand : hand {
         //Debug.Log(" in enemy add v2c 111");
         return card.AddComponent<enemy_card_handler>();
         
+    }
+
+    void attack_player()
+    {
+        base_field_cont bfc = this.gameObject.GetComponent<base_field_cont>();
+        base_field ocupied_enemy = bfc.get_free_field(global::card.card_owner.enemy, true);
+        base_field ocupied_player = bfc.get_free_field(global::card.card_owner.player, true);
+        if ( ocupied_enemy && ocupied_player )
+        {
+            this.gameObject.GetComponent<combat>().card2card(
+                ocupied_enemy.check_card(), ocupied_player.check_card());
+        }
     }
 
     void move_card_to_field()
