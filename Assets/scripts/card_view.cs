@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class card_view : MonoBehaviour {
     public IcardGOcont cardGOcont;
+    public base_field base_field1;
 	// Use this for initialization
 	void Start () {
 		

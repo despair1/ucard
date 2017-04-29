@@ -21,7 +21,7 @@ public class player_field_cont : MonoBehaviour {
         cards_in_field.Add(card);
     }
 
-    public void set_ready2attack()
+    /*public void set_ready2attack()
     {
         foreach(var card in cards_in_field)
         {
@@ -36,5 +36,5 @@ public class player_field_cont : MonoBehaviour {
         //pf.has_card = false;
         dh.underlying_player_field = null;
 
-    }
+    }*/
 }

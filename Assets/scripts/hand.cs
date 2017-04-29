@@ -59,7 +59,8 @@ public class hand : MonoBehaviour,IcardGOcont {
             create_card_gameobj("player_card",global::card.card_owner.player);
             //card.AddComponent<drag_handler>();
         }
-        this.gameObject.GetComponent<player_field_cont>().set_ready2attack();
+        //this.gameObject.GetComponent<player_field_cont>().set_ready2attack();
+        this.gameObject.GetComponent<base_field_cont>().set_player_ready_attack();
 
     }
     protected void create_card_gameobj(string card_object_name,card.card_owner card_owner)
