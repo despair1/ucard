@@ -66,7 +66,7 @@ public class drag_handler : card_view, IBeginDragHandler , IDragHandler, IEndDra
     public void droped_on_player_field(player_field pl_field)
     {
         this.transform.position = pl_field.transform.position;
-        pl_field.has_card = true;
+        pl_field.place(this.gameObject);
         underlying_player_field = pl_field;
         //Debug.Log("card droped");
         is_droped_on_player_field = true;

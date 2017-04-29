@@ -32,7 +32,7 @@ public class player_field_cont : MonoBehaviour {
     {
         cards_in_field.Remove(card);
         var dh = card.GetComponent<drag_handler>();
-        dh.underlying_player_field.has_card=false;
+        dh.underlying_player_field.remove_card();
         //pf.has_card = false;
         dh.underlying_player_field = null;
 

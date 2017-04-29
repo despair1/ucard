@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class player_field : MonoBehaviour,IDropHandler {
-    public bool has_card;
+public class player_field : base_field,IDropHandler {
+    //public bool has_card;
 	// Use this for initialization
 	void Start () {
         //Debug.Log(" start player field");
-        has_card = false;
+        //has_card = false;
 		
 	}
 	
@@ -19,7 +19,7 @@ public class player_field : MonoBehaviour,IDropHandler {
 
     public void OnDrop(PointerEventData ed)
     {
-        if (!has_card && drag_handler.draged_card.card_state ==
+        if (! check_card() && drag_handler.draged_card.card_state ==
             drag_handler.card_states.in_hand)
         {
             Debug.Log(" on drop ");
