@@ -23,8 +23,9 @@ public class enemy_hand : hand {
             //cards_in_hand.Add(card);
             
         }
-        attack_player();
-        move_card_to_field();
+        animated_attack_player aap= new animated_attack_player(this);
+        aap.attack_player();
+        //move_card_to_field();
 
     }
     override protected card_view add_view2card()
@@ -34,16 +35,53 @@ public class enemy_hand : hand {
         
     }
 
-    void attack_player()
+    class animated_attack_player: IanimationEnd
     {
-        base_field_cont bfc = this.gameObject.GetComponent<base_field_cont>();
-        base_field ocupied_enemy = bfc.get_free_field(global::card.card_owner.enemy, true);
-        base_field ocupied_player = bfc.get_free_field(global::card.card_owner.player, true);
-        if ( ocupied_enemy && ocupied_player )
+        enemy_hand eh1;
+        base_field_cont bfc;
+        base_field ocupied_enemy; // = bfc.get_free_field(global::card.card_owner.enemy, true);
+        base_field ocupied_player; // = bfc.get_free_field(global::card.card_owner.player, true);
+        //private IEnumerator corotine;
+
+        public animated_attack_player(enemy_hand eh)
         {
-            this.gameObject.GetComponent<combat>().card2card(
-                ocupied_enemy.check_card(), ocupied_player.check_card());
+            eh1 = eh;
+            bfc = eh.gameObject.GetComponent<base_field_cont>();
+            ocupied_enemy = bfc.get_free_field(global::card.card_owner.enemy, true);
+            ocupied_player = bfc.get_free_field(global::card.card_owner.player, true);
         }
+        public void attack_player()
+        {
+
+            if (ocupied_enemy && ocupied_player)
+            {
+                eh1.gameObject.GetComponent<combat>().start_corotine_animated_attack(
+                    ocupied_enemy.check_card(), ocupied_player.check_card(), this);
+                
+
+            }
+            else finalize();
+        }
+        public void end()
+        {
+            eh1.gameObject.GetComponent<combat>().card2card(
+                    ocupied_enemy.check_card(), ocupied_player.check_card());
+            finalize();
+        }
+        void finalize()
+        {
+            eh1.move_card_to_field();
+
+        }
+
+
+    }
+
+    
+
+    public void end()
+    {
+
     }
 
     void move_card_to_field()
