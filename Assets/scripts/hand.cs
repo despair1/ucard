@@ -100,10 +100,10 @@ public class hand : MonoBehaviour,IcardGOcont {
         }
     }
 
-    public void remove_card_from_hand(GameObject card)
+    /*public void remove_card_from_hand(GameObject card)
     {
         cards_in_hand.Remove(card);
-    }
+    }*/
 
     public void add2cont(GameObject card)
     {
@@ -115,6 +115,7 @@ public class hand : MonoBehaviour,IcardGOcont {
     {
         cards_in_hand.Remove(card);
         card.GetComponent<card_view>().cardGOcont = null;
+        set_new_hand_positions();
 
     }
 	
