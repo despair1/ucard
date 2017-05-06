@@ -5,8 +5,11 @@ using UnityEngine;
 public class card_view : MonoBehaviour {
     public IcardGOcont cardGOcont;
     public base_field base_field1;
-	// Use this for initialization
+    // Use this for initialization
+    card card1;
+    card_digit_view attack_prop;
 	void Start () {
+        card1=this.gameObject.GetComponent<card>();
 		
 	}
 
@@ -17,6 +20,14 @@ public class card_view : MonoBehaviour {
         this.transform.position = base_field.transform.position;
         cardGOcont.remove_from_cont(this.gameObject);
 
+    }
+
+    public void init_prop()
+    {
+        GameObject attack_spr = new GameObject();
+        attack_prop = attack_spr.AddComponent<card_digit_view>();
+        attack_prop.attach2card(this.gameObject, 3);
+        attack_spr.transform.position = new Vector3(-0.6f, -1, 0);
     }
 	
 	// Update is called once per frame

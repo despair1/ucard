@@ -75,6 +75,7 @@ public class hand : MonoBehaviour,IcardGOcont {
         // unic cont for player\enemy hand
         //cards_in_hand.Add(card);
         card_view cv = this.add_view2card();
+        cv.init_prop();
         cv.cardGOcont = this;
         cv.cardGOcont.add2cont(card);
         set_new_hand_positions();
