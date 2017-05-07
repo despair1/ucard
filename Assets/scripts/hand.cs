@@ -63,13 +63,22 @@ public class hand : MonoBehaviour,IcardGOcont {
         this.gameObject.GetComponent<base_field_cont>().set_player_ready_attack();
 
     }
+    private CardDescription get_random()
+    {
+        CardList cl = this.gameObject.GetComponent<DataController>().cardList;
+        return cl.cardList[Random.Range(0, cl.cardList.Length)];
+
+    }
     protected void create_card_gameobj(string card_object_name,card.card_owner card_owner)
     {
         card = new GameObject(card_object_name);
-        s1 = Resources.Load<Sprite>(sprite_res_names.get_name());
+        //s1 = Resources.Load<Sprite>(sprite_res_names.get_name());
+        CardDescription card_desc1 = get_random();
+        s1 = Resources.Load<Sprite>(card_desc1.png_file_name);
         sr1 = card.AddComponent<SpriteRenderer>();
         card card_logic = card.AddComponent<card>();
-        card_logic.owner = card_owner;
+        //card_logic.owner = card_owner;
+        card_logic.set_property(card_desc1.attack, card_desc1.health, card_owner);
         sr1.sprite = s1;
         card.AddComponent<BoxCollider2D>();
         // unic cont for player\enemy hand

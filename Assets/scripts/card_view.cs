@@ -8,8 +8,12 @@ public class card_view : MonoBehaviour {
     // Use this for initialization
     card card1;
     card_digit_view attack_prop;
-	void Start () {
-        card1=this.gameObject.GetComponent<card>();
+    private void Awake()
+    {
+        card1 = this.gameObject.GetComponent<card>();
+    }
+    void Start () {
+        
 		
 	}
 
@@ -26,7 +30,7 @@ public class card_view : MonoBehaviour {
     {
         GameObject attack_spr = new GameObject();
         attack_prop = attack_spr.AddComponent<card_digit_view>();
-        attack_prop.attach2card(this.gameObject, 3);
+        attack_prop.attach2card(this.gameObject, card1.current_attack);
         attack_spr.transform.position = new Vector3(-0.6f, -1, 0);
     }
 	

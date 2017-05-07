@@ -1,0 +1,24 @@
+{
+    "cardList": [
+        {
+            "png_file_name": "cards/boss_1",
+            "attack": 1,
+            "health": 2
+        },
+        {
+            "png_file_name": "cards/anchutka",
+            "attack": 2,
+            "health": 3
+        },
+		{
+            "png_file_name": "cards/mara",
+            "attack": 4,
+            "health": 5
+        },
+        {
+            "png_file_name": "cards/babay",
+            "attack": 3,
+            "health": 2
+        }
+    ]
+}
