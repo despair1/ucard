@@ -6,8 +6,7 @@ using UnityEngine.EventSystems;
 
 public class drag_handler : card_view, IBeginDragHandler , IDragHandler, IEndDragHandler
 {
-    public enum card_states { in_hand,on_field,ready2attack}
-    public card_states card_state;
+    
     public static drag_handler draged_card;
 
     BoxCollider2D bxc2d;

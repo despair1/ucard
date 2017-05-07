@@ -42,19 +42,20 @@ public class enemy_hand : hand {
         base_field ocupied_enemy; // = bfc.get_free_field(global::card.card_owner.enemy, true);
         base_field ocupied_player; // = bfc.get_free_field(global::card.card_owner.player, true);
         //private IEnumerator corotine;
-
+        Vector3 old_pos;
         public animated_attack_player(enemy_hand eh)
         {
             eh1 = eh;
             bfc = eh.gameObject.GetComponent<base_field_cont>();
-            ocupied_enemy = bfc.get_free_field(global::card.card_owner.enemy, true);
-            ocupied_player = bfc.get_free_field(global::card.card_owner.player, true);
+            ocupied_enemy = bfc.get_occupied_field(global::card.card_owner.enemy);
+            ocupied_player = bfc.get_occupied_field(global::card.card_owner.player);
         }
         public void attack_player()
         {
-
+            
             if (ocupied_enemy && ocupied_player)
             {
+                old_pos = ocupied_enemy.check_card().transform.position;
                 eh1.gameObject.GetComponent<combat>().start_corotine_animated_attack(
                     ocupied_enemy.check_card(), ocupied_player.check_card(), this);
                 
@@ -66,6 +67,7 @@ public class enemy_hand : hand {
         {
             eh1.gameObject.GetComponent<combat>().card2card(
                     ocupied_enemy.check_card(), ocupied_player.check_card());
+            if (ocupied_enemy.check_card()) ocupied_enemy.check_card().transform.position = old_pos;
             finalize();
         }
         void finalize()
@@ -86,6 +88,7 @@ public class enemy_hand : hand {
 
     void move_card_to_field()
     {
+        this.gameObject.GetComponent<base_field_cont>().set_enemy_ready_attack();
         foreach ( var card in cards_in_hand ) {
             if (Random.Range(0, 5) < 1)
             {

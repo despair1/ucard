@@ -18,8 +18,21 @@ public class combat : MonoBehaviour {
 
     public void card2card(GameObject attacking_card, GameObject defending_card)
     {
-        destroy_card(attacking_card);
-        destroy_card(defending_card);
+        card attack = attacking_card.GetComponent<card>();
+        card defend = defending_card.GetComponent<card>();
+        attack.current_health -= defend.current_attack;
+        defend.current_health -= attack.current_attack;
+        Debug.Log("current health" + attack.current_health);
+        if (attack.current_health < 1)
+        {
+            destroy_card(attacking_card);
+        }
+        else attacking_card.GetComponent<card_view>().refresh_attack_health();
+        if (defend.current_health < 1)
+        {
+            destroy_card(defending_card);
+        }
+        else defending_card.GetComponent<card_view>().refresh_attack_health();
 
     }
     public void start_corotine_animated_attack(GameObject attacking_card, GameObject defending_card,

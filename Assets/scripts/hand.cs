@@ -32,7 +32,7 @@ public class hand : MonoBehaviour,IcardGOcont {
         }
     }
     protected position p1=new position(0,-3.5,1.4);
-
+    /*
     protected class sprite_res_names
     {
         static string[] names = { "cards/boss_1", "cards/anchutka", "cards/mara", "cards/babay" };
@@ -40,16 +40,10 @@ public class hand : MonoBehaviour,IcardGOcont {
         {
             return names[Random.Range(0, names.Length)];
         }
-    }
-	// Use this for initialization
+    }*/
 	void Start () {
-        /*s1 = Resources.Load<Sprite>("cards/boss_1");
-        //s1 = Resources.Load<Sprite>("boss_1");
-        sr1 = gameObject.AddComponent<SpriteRenderer>();
-        sr1.sprite = s1;
-        sr1.transform.position = new Vector3(-2, -4, 0);
-        //Instantiate(s1);*/
-        Debug.Log("CREATING HAND OBJ");
+       
+        //Debug.Log("CREATING HAND OBJ");
 	}
 
     public void OnNextMove() // player move
@@ -84,7 +78,7 @@ public class hand : MonoBehaviour,IcardGOcont {
         // unic cont for player\enemy hand
         //cards_in_hand.Add(card);
         card_view cv = this.add_view2card();
-        cv.init_prop();
+        cv.refresh_attack_health();
         cv.cardGOcont = this;
         cv.cardGOcont.add2cont(card);
         set_new_hand_positions();

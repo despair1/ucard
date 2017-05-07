@@ -5,9 +5,13 @@ using UnityEngine;
 public class card_view : MonoBehaviour {
     public IcardGOcont cardGOcont;
     public base_field base_field1;
+    public enum card_states { unknown, in_hand, on_field, ready2attack }
+    public card_states card_state;
     // Use this for initialization
     card card1;
-    card_digit_view attack_prop;
+    //card_digit_view attack_prop;
+    GameObject attack_spr;
+    GameObject health_spr;
     private void Awake()
     {
         card1 = this.gameObject.GetComponent<card>();
@@ -26,12 +30,21 @@ public class card_view : MonoBehaviour {
 
     }
 
-    public void init_prop()
+    public void refresh_attack_health()
     {
-        GameObject attack_spr = new GameObject();
-        attack_prop = attack_spr.AddComponent<card_digit_view>();
+        if (attack_spr) GameObject.Destroy(attack_spr);
+        attack_spr = new GameObject();
+        var attack_prop = attack_spr.AddComponent<card_digit_view>();
         attack_prop.attach2card(this.gameObject, card1.current_attack);
-        attack_spr.transform.position = new Vector3(-0.6f, -1, 0);
+        //attack_spr.transform.position = new Vector3(-0.6f, -1, 0);
+        attack_spr.transform.localPosition = new Vector3(-0.6f, -1, 0);
+
+        if (health_spr) GameObject.Destroy(health_spr);
+        health_spr = new GameObject();
+        var health_prop = health_spr.AddComponent<card_digit_view>();
+        health_prop.attach2card(this.gameObject, card1.current_health);
+        //health_spr.transform.position = new Vector3(0.6f, -1, 0);
+        health_spr.transform.localPosition = new Vector3(0.6f, -1, 0);
     }
 	
 	// Update is called once per frame
