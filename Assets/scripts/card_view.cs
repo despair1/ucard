@@ -28,6 +28,7 @@ public class card_view : MonoBehaviour {
         base_field.place(this.gameObject);
         this.transform.position = base_field.transform.position;
         cardGOcont.remove_from_cont(this.gameObject);
+        remove_mana_cost();
 
     }
 
@@ -38,6 +39,10 @@ public class card_view : MonoBehaviour {
         mana_dv.attach2card(this.gameObject, card1.mana_cost);
         mana_spr.transform.localPosition = new Vector3(-0.6f, 1, 0);
 
+    }
+    public void remove_mana_cost()
+    {
+        if (mana_spr) GameObject.Destroy(mana_spr);
     }
 
     public void refresh_attack_health()

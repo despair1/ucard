@@ -72,6 +72,7 @@ public class drag_handler : card_view, IBeginDragHandler , IDragHandler, IEndDra
         is_droped_on_player_field = true;
         card_state = card_states.on_field;
         bxc2d.enabled = true;
+        remove_mana_cost();
         //hand_obj.remove_card_from_hand(this.gameObject);
         //cardGOcont.remove_from_cont(this.gameObject);
         //player_field_container_obj.add_card2field(this.gameObject);
