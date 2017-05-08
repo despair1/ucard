@@ -3,17 +3,20 @@
         {
             "png_file_name": "lammerz",
             "attack": 1,
-            "health": 2
+            "health": 2,
+            "mana_cost": 0
         },
         {
             "png_file_name": "quantuz",
             "attack": 2,
-            "health": 3
+            "health": 3,
+            "mana_cost": 0
         },
         {
             "png_file_name": "lammerz",
             "attack": 1,
-            "health": 2
+            "health": 2,
+            "mana_cost": 0
         }
     ]
 }

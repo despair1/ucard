@@ -32,22 +32,17 @@ public class hand : MonoBehaviour,IcardGOcont {
         }
     }
     protected position p1=new position(0,-3.5,1.4);
-    /*
-    protected class sprite_res_names
-    {
-        static string[] names = { "cards/boss_1", "cards/anchutka", "cards/mara", "cards/babay" };
-        static public string get_name()
-        {
-            return names[Random.Range(0, names.Length)];
-        }
-    }*/
+    ManaControl manaControl;
 	void Start () {
+        manaControl = this.gameObject.GetComponent<ManaControl>();
        
         //Debug.Log("CREATING HAND OBJ");
 	}
 
     public void OnNextMove() // player move
     {
+        manaControl.add_mana();
+        manaControl.current2base();
         if (cards_in_hand.Count<9)
         {
             create_card_gameobj("player_card",global::card.card_owner.player);
@@ -66,19 +61,18 @@ public class hand : MonoBehaviour,IcardGOcont {
     protected void create_card_gameobj(string card_object_name,card.card_owner card_owner)
     {
         card = new GameObject(card_object_name);
-        //s1 = Resources.Load<Sprite>(sprite_res_names.get_name());
         CardDescription card_desc1 = get_random();
         s1 = Resources.Load<Sprite>(card_desc1.png_file_name);
         sr1 = card.AddComponent<SpriteRenderer>();
         card card_logic = card.AddComponent<card>();
-        //card_logic.owner = card_owner;
-        card_logic.set_property(card_desc1.attack, card_desc1.health, card_owner);
+        card_logic.set_property(card_desc1, card_owner);
         sr1.sprite = s1;
         card.AddComponent<BoxCollider2D>();
         // unic cont for player\enemy hand
         //cards_in_hand.Add(card);
         card_view cv = this.add_view2card();
         cv.refresh_attack_health();
+        cv.add_mana_cost();
         cv.cardGOcont = this;
         cv.cardGOcont.add2cont(card);
         set_new_hand_positions();

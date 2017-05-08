@@ -12,6 +12,7 @@ public class card_view : MonoBehaviour {
     //card_digit_view attack_prop;
     GameObject attack_spr;
     GameObject health_spr;
+    GameObject mana_spr;
     private void Awake()
     {
         card1 = this.gameObject.GetComponent<card>();
@@ -27,6 +28,15 @@ public class card_view : MonoBehaviour {
         base_field.place(this.gameObject);
         this.transform.position = base_field.transform.position;
         cardGOcont.remove_from_cont(this.gameObject);
+
+    }
+
+    public void add_mana_cost()
+    {
+        mana_spr = new GameObject();
+        var mana_dv = mana_spr.AddComponent<card_digit_view>();
+        mana_dv.attach2card(this.gameObject, card1.mana_cost);
+        mana_spr.transform.localPosition = new Vector3(-0.6f, 1, 0);
 
     }
 

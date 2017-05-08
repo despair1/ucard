@@ -13,6 +13,7 @@ public class card : MonoBehaviour {
 
     int base_attack;
     int base_health;
+    public int mana_cost;
     public int current_attack;
     public int current_health;
 
@@ -25,11 +26,13 @@ public class card : MonoBehaviour {
         attack_digit_sprite.sprite = hand_obj.GetComponent<digits>().get_digit_sprite(3);
 		*/
 	}
-    public void set_property(int _base_attack, int _base_health, card_owner _owner)
+    public void set_property(CardDescription cardDesc,card_owner _owner)
     {
         owner = _owner;
-        current_attack = base_attack = _base_attack;
-        current_health = base_health = _base_health;
+        current_attack = base_attack = cardDesc.attack ;
+        current_health = base_health = cardDesc.health ;
+        mana_cost = cardDesc.mana_cost;
+
 
     }
     public void set_attack_digit(int dig)

@@ -3,22 +3,26 @@
         {
             "png_file_name": "cards/boss_1",
             "attack": 1,
-            "health": 2
+            "health": 2,
+			"mana_cost": 1
         },
         {
             "png_file_name": "cards/anchutka",
             "attack": 2,
-            "health": 3
+            "health": 3,
+			"mana_cost": 2
         },
 		{
             "png_file_name": "cards/mara",
             "attack": 4,
-            "health": 5
+            "health": 5,
+			"mana_cost": 4
         },
         {
             "png_file_name": "cards/babay",
             "attack": 3,
-            "health": 2
+            "health": 2,
+			"mana_cost": 2
         }
     ]
 }
